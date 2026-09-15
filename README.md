@@ -1,3 +1,5 @@
+## Miranda testar commits.
+
 # JavaScript CLI Template
 
 Welcome to the **1dv610** JavaScript Command-Line Interface (CLI) template. This repository serves as a clean, pre-configured boilerplate for building robust Node.js console applications with modern tools and best practices.
