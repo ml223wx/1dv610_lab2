@@ -1,16 +1,19 @@
 #!/usr/bin/env node
 
+import { testIfIsExported } from "./mockExpenseHistory.js"
+
 
 
 /**
  * The user's expense representing a purchase.
  */
 export class Expense {
-  constructor(amount, date, comment, category) {
+  constructor(amount, date, category, subCategory, comment) {
     this.amount = amount
     this.date = date
-    this.comment = comment
     this.category = category
+    this.subCategory = subCategory
+    this.comment = comment
   }
 
   getAmount(){
@@ -23,7 +26,7 @@ export class Expense {
     return this.category
   }
   getSubcategory(){
-    return this.subCategoryName
+    return this.subCategory
   }
   getComment(){
     return this.comment
@@ -34,29 +37,26 @@ export class Expense {
  * Handling the user's expenses and statistics.
  */
 export class ExpenseManager {
-    constructor(expense, expenseHistory) {
-    this.expense = expense,
-    this.expenseHistory = expenseHistory}
 
   addExpense(){
 
   }
+
   removeExpense(){
 
   }
+
   getExpense(){
 
   }
-  getExpenses(){
 
-  }
   getExpensesForMonth(year, month){
 
   }
-  getTotalByCategory(year, month){
+  getTotalByCategory(year, month, category){
 
   }
-  getTotalBySubcategory(year, month){
+  getTotalBySubcategory(year, month, subCategory){
 
   }
 }
@@ -70,7 +70,7 @@ export class Category {
     this.subcategories = []
   }
   addSubcategory(subCategoryName){
-
+    this.subcategories.push(subCategoryName)
   }
 
   getSubcategories() {
@@ -78,7 +78,15 @@ export class Category {
   }
 
   hasSubcategory(subcategoryName){
-
+    for (i = 0; i < this.subcategories.length; i++) {
+      console.log("this.subcategories[i]")
+      console.log(this.subcategories[i])
+      console.log("subcategoryName")
+      console.log(subcategoryName)
+      console.log("true or false:")
+      console.log(this.subcategories[i] === subcategoryName)
+      return this.subcategories[i] === subcategoryName
+    }
   }
 }
 
@@ -95,8 +103,8 @@ export class Subcategory {
  * Execution entry point.
  */
 function main() {
-  console.log('🚀 CLI Application is up and running!')
-  console.log("Edit src/app.js and run 'npm start' to see your changes.")
+  console.log('🚀 Application is up and running!')
+  console.log(testIfIsExported)
 
   try {
     const testExpense1 = new Expense(100, 2026-9-15, "Mat", "Snacks", "godis")
