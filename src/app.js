@@ -1,36 +1,6 @@
 #!/usr/bin/env node
 
-/**
- * Extracts the name argument from the command line.
- *
- * @example
- * parseArgs(['Ada Lovelace']) // Returns 'Ada Lovelace'
- * parseArgs([]) // Returns undefined
- * @param {string[]} argv - Command-line arguments, excluding the node
- *   executable and script path (i.e. `process.argv.slice(2)`).
- * @returns {string|undefined} The first positional argument, if any.
- */
-export function parseArgs(argv) {
-  return argv[0]
-}
 
-/**
- * Generates a formatted greeting message.
- *
- * @example
- * generateGreeting('Ada Lovelace') // Returns 'Hello, Ada Lovelace!'
- * generateGreeting(123) // Returns 'Hello, Guest!'
- * @param {string} [name='Brian Kernighan'] - The name of the person to greet.
- * @returns {string} The complete greeting message.
- */
-export function generateGreeting(name = 'Brian Kernighan') {
-  // Guard clause: Handle missing or invalid types strictly to ensure predictable behavior
-  if (typeof name !== 'string' || name.trim() === '') {
-    return 'Hello, Guest!'
-  }
-
-  return `Hello, ${name}!`
-}
 
 /**
  * The user's expense representing a purchase.
@@ -41,6 +11,22 @@ export class Expense {
     this.date = date
     this.comment = comment
     this.category = category
+  }
+
+  getAmount(){
+    return this.amount
+  }
+  getDate(){
+    return this.date
+  }
+  getCategory(){
+    return this.category
+  }
+  getSubcategory(){
+    return this.subCategoryName
+  }
+  getComment(){
+    return this.comment
   }
 }
 
@@ -81,16 +67,17 @@ export class ExpenseManager {
 export class Category {
   constructor(name) {
     this.name = name
+    this.subcategories = []
   }
   addSubcategory(subCategoryName){
 
   }
 
   getSubcategories() {
-
+    return this.subcategories
   }
-  
-  hasSubcategory(){
+
+  hasSubcategory(subcategoryName){
 
   }
 }
@@ -112,9 +99,13 @@ function main() {
   console.log("Edit src/app.js and run 'npm start' to see your changes.")
 
   try {
-    const name = parseArgs(process.argv.slice(2))
-    const greeting = generateGreeting(name)
-    console.log(`\nMessage of the day: ${greeting}`)
+    const testExpense1 = new Expense(100, 2026-9-15, "Mat", "Snacks", "godis")
+    const testExpense2 = new Expense (50, 2026-9-15, "Mat","Livsmedel" ,"kaffe")
+    const expenseManager = new ExpenseManager()
+    expenseManager.addExpense(testExpense1)
+    expenseManager.addExpense(testExpense2)
+
+
   } catch (error) {
     console.error('An unexpected error occurred during execution:', error.message)
     process.exitCode = 1
