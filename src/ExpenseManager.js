@@ -63,6 +63,23 @@ export class ExpenseManager {
   }
 
   getTotalBySubcategory(year, month, subCategory){
+    const expensesForMonth = this.getExpensesByMonth(year, month)
+    let expensesInCategory = []
+    for (let i = 0; i < expensesForMonth.length; i++) {
+      const expense = expensesForMonth[i]
+      if (expense.subCategory === subCategory) {
+      expensesInCategory.push(expense)
+      }
+    }
+
+    let sum = 0
+
+    for (let i = 0; i < expensesInCategory.length; i++) {
+      sum = sum + expensesInCategory[i].amount
+    }
+    console.log("returnerar sum:")
+    console.log(sum)
+    return sum
 
   }
 }
