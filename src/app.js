@@ -1,37 +1,38 @@
 #!/usr/bin/env node
 
-import { testIfIsExported } from "./mockExpenseHistory.js"
+import { mockExpenseHistory, testIfIsExported } from "./mockExpenseHistory.js"
+import { Expense } from "./Expense.js"
 
 
 
-/**
- * The user's expense representing a purchase.
- */
-export class Expense {
-  constructor(amount, date, category, subCategory, comment) {
-    this.amount = amount
-    this.date = date
-    this.category = category
-    this.subCategory = subCategory
-    this.comment = comment
-  }
+// /**
+//  * The user's expense representing a purchase.
+//  */
+// export class Expense {
+//   constructor(amount, date, category, subCategory, comment) {
+//     this.amount = amount
+//     this.date = date
+//     this.category = category
+//     this.subCategory = subCategory
+//     this.comment = comment
+//   }
 
-  getAmount(){
-    return this.amount
-  }
-  getDate(){
-    return this.date
-  }
-  getCategory(){
-    return this.category
-  }
-  getSubcategory(){
-    return this.subCategory
-  }
-  getComment(){
-    return this.comment
-  }
-}
+//   getAmount(){
+//     return this.amount
+//   }
+//   getDate(){
+//     return this.date
+//   }
+//   getCategory(){
+//     return this.category
+//   }
+//   getSubcategory(){
+//     return this.subCategory
+//   }
+//   getComment(){
+//     return this.comment
+//   }
+// }
 
 /**
  * Handling the user's expenses and statistics.
@@ -104,14 +105,12 @@ export class Subcategory {
  */
 function main() {
   console.log('🚀 Application is up and running!')
-  console.log(testIfIsExported)
+  console.log(mockExpenseHistory)
 
   try {
-    const testExpense1 = new Expense(100, 2026-9-15, "Mat", "Snacks", "godis")
-    const testExpense2 = new Expense (50, 2026-9-15, "Mat","Livsmedel" ,"kaffe")
-    const expenseManager = new ExpenseManager()
-    expenseManager.addExpense(testExpense1)
-    expenseManager.addExpense(testExpense2)
+    // const expenseManager = new ExpenseManager()
+    // expenseManager.addExpense(testExpense1)
+    // expenseManager.addExpense(testExpense2)
 
 
   } catch (error) {
