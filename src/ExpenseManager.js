@@ -14,8 +14,8 @@ export class ExpenseManager {
 
   }
 
-  getExpense(){
-
+  getUpdatedExpenseHistory(){
+    return this.expenseHistory
   }
 
   // JavaScript counts month from 0, meaning that January = 0, December = 11.
