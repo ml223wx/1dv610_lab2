@@ -28,7 +28,9 @@ function main() {
     // console.log('mockExpenseHistory efter push:')
     // console.log(mockExpenseHistory)
     // expenseManager.addExpense(testExpense2)
-    expenseManager.getTotalExpensesForMonth(2026, 7)
+    // expenseManager.getSumExpensesForMonth(2026, 7)
+    expenseManager.getTotalByCategory(2026, 7, "Mat")
+
 
 
   } catch (error) {
