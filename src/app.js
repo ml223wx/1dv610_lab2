@@ -24,10 +24,11 @@ function main() {
   try {
     const expenseManager = new ExpenseManager(mockExpenseHistory)
     const newTestExpense1 = new Expense(100, new Date (2026,7,15), "Mat", "Snacks", "New test expense")
-    expenseManager.addExpense(newTestExpense1)
-    console.log('mockExpenseHistory efter push:')
-    console.log(mockExpenseHistory)
+    // expenseManager.addExpense(newTestExpense1)
+    // console.log('mockExpenseHistory efter push:')
+    // console.log(mockExpenseHistory)
     // expenseManager.addExpense(testExpense2)
+    expenseManager.getTotalExpensesForMonth(2026, 7)
 
 
   } catch (error) {
