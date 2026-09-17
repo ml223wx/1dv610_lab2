@@ -19,11 +19,14 @@ export class Subcategory {
  */
 function main() {
   console.log('🚀 Application is up and running!')
-  console.log(mockExpenseHistory)
+  // console.log(mockExpenseHistory)
 
   try {
-    // const expenseManager = new ExpenseManager()
-    // expenseManager.addExpense(testExpense1)
+    const expenseManager = new ExpenseManager(mockExpenseHistory)
+    const newTestExpense1 = new Expense(100, new Date (2026,7,15), "Mat", "Snacks", "New test expense")
+    expenseManager.addExpense(newTestExpense1)
+    console.log('mockExpenseHistory efter push:')
+    console.log(mockExpenseHistory)
     // expenseManager.addExpense(testExpense2)
 
 

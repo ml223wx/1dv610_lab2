@@ -2,9 +2,12 @@
  * Handling the user's expenses and statistics.
  */
 export class ExpenseManager {
+    constructor(expenseHistory) {
+    this.expenseHistory = expenseHistory
+  }
 
-  addExpense(){
-
+  addExpense(expense){
+    this.expenseHistory.push(expense)
   }
 
   removeExpense(){
@@ -15,12 +18,14 @@ export class ExpenseManager {
 
   }
 
-  getExpensesForMonth(year, month){
+  getTotalExpensesForMonth(year, month){
 
   }
+
   getTotalByCategory(year, month, category){
 
   }
+
   getTotalBySubcategory(year, month, subCategory){
 
   }
