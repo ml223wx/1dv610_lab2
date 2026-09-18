@@ -2,27 +2,27 @@
  * A category of purchases.
  */
 export class Category {
-  constructor(name) {
+  constructor(name, subCategories) {
     this.name = name
-    this.subcategories = []
+    this.subCategories = subCategories
   }
   addSubcategory(subCategoryName){
-    this.subcategories.push(subCategoryName)
+    this.subCategories.push(subCategoryName)
   }
 
   getSubcategories() {
-    return this.subcategories
+    return this.subCategories
   }
 
   hasSubcategory(subcategoryName){
-    for (i = 0; i < this.subcategories.length; i++) {
-      console.log("this.subcategories[i]")
-      console.log(this.subcategories[i])
-      console.log("subcategoryName")
-      console.log(subcategoryName)
+    for (i = 0; i < this.subCategories.length; i++) {
+      console.log("this.subCategories[i]")
+      console.log(this.subCategories[i])
+      console.log("subCategoryName")
+      console.log(subCategoryName)
       console.log("true or false:")
-      console.log(this.subcategories[i] === subcategoryName)
-      return this.subcategories[i] === subcategoryName
+      console.log(this.subcCtegories[i] === subcategoryName)
+      return this.subCategories[i] === subcategoryName
     }
   }
 }

@@ -1,3 +1,6 @@
+import "./Categories.js"
+import { categories} from "./standardCategories.js"
+
 /**
  * Handling the user's expenses and statistics.
  */
@@ -7,7 +10,12 @@ export class ExpenseManager {
   }
 
   addExpense(expense){
-    this.expenseHistory.push(expense)
+    if (this.isValid(expense)) {
+      console.log("this.isValid(expense)")
+      this.expenseHistory.push(expense)
+    } else {
+      console.log("fel - ej valid - felhantera")
+    }
   }
 
   removeExpense(){
@@ -43,8 +51,8 @@ export class ExpenseManager {
     for (let i = 0; i < expensesInCategory.length; i++) {
       sum = sum + expensesInCategory[i].amount
     }
-    console.log("returnerar sum:")
-    console.log(sum)
+    // console.log("returnerar sum:")
+    // console.log(sum)
     return sum
   }
 
@@ -52,13 +60,13 @@ export class ExpenseManager {
         let expensesForMonth = []
     for (let i = 0; i < this.expenseHistory.length; i++) {
       const expense = this.expenseHistory[i]
-      const expensesDate = expense.getDate()
+      const expensesDate = expense.date
       if (expensesDate.getFullYear() === year & expensesDate.getMonth() === month) {
       expensesForMonth.push(expense)
       }
     }
-    console.log("returnerar expensesForMonth:")
-    console.log(expensesForMonth)
+    // console.log("returnerar expensesForMonth:")
+    // console.log(expensesForMonth)
     return expensesForMonth
   }
 
@@ -77,9 +85,21 @@ export class ExpenseManager {
     for (let i = 0; i < expensesInCategory.length; i++) {
       sum = sum + expensesInCategory[i].amount
     }
-    console.log("returnerar sum:")
-    console.log(sum)
+    // console.log("returnerar sum:")
+    // console.log(sum)
     return sum
 
+  }
+
+  isValid(expense){
+    // console.log("expense:")
+    // console.log(expense)
+    // console.log(categories)
+    for (let i = 0; i < categories.length; i++) {
+    if (categories[i].name === expense.category){
+      console.log("category är category dvs truuue")
+      return true
+    }
+    }
   }
 }
