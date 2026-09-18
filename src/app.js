@@ -3,8 +3,8 @@
 import { mockExpenseHistory, testIfIsExported } from "./mockExpenseHistory.js"
 import { Expense } from "./Expense.js"
 import { ExpenseManager } from "./ExpenseManager.js"
-import "./Categories.js"
-import "./standardCategories.js"
+import "./Category.js"
+import { CategoryManager} from "./CategoryManager.js"
 
 /**
  * A sub-category of purchases.
@@ -24,6 +24,7 @@ function main() {
 
   try {
     const expenseManager = new ExpenseManager(mockExpenseHistory)
+    const categoryManager = new CategoryManager()
     const newTestExpense1 = new Expense(100, new Date (2026,7,15), "Food", "Snacks", "New test expense")
     const newTestExpense2 = new Expense(100, new Date (2026,6,15), "FelFood", "Snacks", "New test expense")
     // expenseManager.addExpense(newTestExpense1)
@@ -31,9 +32,11 @@ function main() {
     // console.log(mockExpenseHistory)
     // expenseManager.addExpense(testExpense2)
     // expenseManager.getSumExpensesForMonth(2026, 7)
-    expenseManager.getTotalByCategory(2026, 7, "Mat")
-    expenseManager.addExpense(newTestExpense1)
-    expenseManager.addExpense(newTestExpense2)
+    // expenseManager.getTotalByCategory(2026, 7, "Mat")
+    // expenseManager.addExpense(newTestExpense1)
+    // expenseManager.addExpense(newTestExpense2)
+    categoryManager.addSubCategory("hello")
+
 
 
   } catch (error) {

@@ -1,5 +1,5 @@
-import "./Categories.js"
-import { categories} from "./standardCategories.js"
+import "./Category.js"
+import { standardCategories} from "./standardCategories.js"
 
 /**
  * Handling the user's expenses and statistics.
@@ -95,8 +95,8 @@ export class ExpenseManager {
     // console.log("expense:")
     // console.log(expense)
     // console.log(categories)
-    for (let i = 0; i < categories.length; i++) {
-    if (categories[i].name === expense.category){
+    for (let i = 0; i < standardCategories.length; i++) {
+    if (standardCategories[i].name === expense.category){
       console.log("category är category dvs truuue")
       return true
     }
