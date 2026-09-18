@@ -6,14 +6,7 @@ import { ExpenseManager } from "./ExpenseManager.js"
 import "./Categories.js"
 import "./standardCategories.js"
 
-/**
- * A sub-category of purchases.
- */
-export class Subcategory {
-  constructor(name) {
-    this.name = name
-  }
-}
+
 
 /**
  * Execution entry point.
@@ -23,17 +16,13 @@ function main() {
   // console.log(mockExpenseHistory)
 
   try {
-    const expenseManager = new ExpenseManager(mockExpenseHistory)
-    const newTestExpense1 = new Expense(100, new Date (2026,7,15), "Food", "Snacks", "New test expense")
-    const newTestExpense2 = new Expense(100, new Date (2026,6,15), "FelFood", "Snacks", "New test expense")
-    // expenseManager.addExpense(newTestExpense1)
-    // console.log('mockExpenseHistory efter push:')
-    // console.log(mockExpenseHistory)
-    // expenseManager.addExpense(testExpense2)
-    // expenseManager.getSumExpensesForMonth(2026, 7)
+    const expenseManager = new ExpenseManager()
+    const correctlyTestExpense = new Expense(100, new Date (2026,7,15), "Food", "Snacks", "New correctly entered test expense 1")
+
+    expenseManager.getSumExpensesForMonth(2026, 7)
     expenseManager.getTotalByCategory(2026, 7, "Mat")
-    expenseManager.addExpense(newTestExpense1)
-    expenseManager.addExpense(newTestExpense2)
+    expenseManager.addExpense(correctlyTestExpense)
+    expenseManager.addExpense(faultyTestExpense2)
 
 
   } catch (error) {
