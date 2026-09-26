@@ -21,20 +21,21 @@ function main() {
     // Adds a new expense:
     expenseManager.addExpense(newTestExpense)
 
-    console.log('Gets the sum of all expenses for September:')
-    console.log(expenseManager.getSumExpensesForMonth(2026, 8))
+    // console.log('Gets the sum of all expenses for September:')
+    // console.log(expenseManager.getSumExpensesForMonth(2026, 8))
 
-    console.log('Gets all "Food" category expenses for September: ')
-    console.log(expenseManager.getTotalByCategory(2026, 8, 'Food'))
+    // console.log('Gets all "Food" category expenses for September: ')
+    // console.log(expenseManager.getTotalByCategory(2026, 8, 'Food'))
 
     // Adds a category:
     // Has to have at least 1 sub category
-    const newCategory =  new Category("Health & Beauty", ["Beauty", "Healthcare"])
-    categoryManager.addCategory(newCategory)
+    // const newCategory =  new Category("Health & Beauty", ["Beauty", "Healthcare"])
+    // categoryManager.addCategory(newCategory)
 
     // Adds a sub category:
     // TO-DO ...
     // Medication
+    categoryManager.addSubCategory("Food", "Rotten food")
 
     // console.log('Prints all categories:')
     // TO-DO ...

@@ -9,23 +9,42 @@ export class CategoryManager {
   }
 
   addCategory(newCategory){
-    if (!this.doesAlreadyExist(newCategory)){
+    if (!this.alreadyExists(newCategory.name)){
     this.categories.push(newCategory)
     }
   }
 
-  addSubCategory(newSubcategory){
-    for (let i = 0; i < categories.length; i++) {
-      for (let j = 0; j < categories.subCategories.length; j++) {
+  // addSubCategory(categoryName, newSubcategory){
+  //   for (let i = 0; i < categories.length; i++) {
+  //     for (let j = 0; j < categories.subCategories.length; j++) {
+  //     }
+  //   }
+  // }
+
+  addSubCategory (mainCategoryName, newSubcategory) {
+    if (this.alreadyExists(mainCategoryName)) {
+      const category = this.findCategoryObject(mainCategoryName)
+      category.subCategories.push(newSubcategory)
+    }
+
+  }
+
+  alreadyExists(categoryName) {
+    for (let i = 0; i < this.categories.length; i++) {
+      if (categoryName === this.categories[i].name) {
+        return true
+      }
+    }
+    return false
+  }
+
+  findCategoryObject(categoryName){
+    for (let i = 0; i < this.categories.length; i++){
+      if (this.categories[i].name === categoryName) {
+        return this.categories[i]
       }
     }
   }
 
-  doesAlreadyExist(newCategory) {
-    for (let i = 0; i < this.categories.length; i++) {
-      if (newCategory.name === this.categories[i].name) {
-        console.log('Finns redan - felhantera')
-      }
-    }
-  }
+
 }

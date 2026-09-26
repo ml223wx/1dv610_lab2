@@ -21,7 +21,7 @@ export class Category {
       console.log("subCategoryName")
       console.log(subCategoryName)
       console.log("true or false:")
-      console.log(this.subcCtegories[i] === subcategoryName)
+      console.log(this.subcCategories[i] === subcategoryName)
       return this.subCategories[i] === subcategoryName
     }
   }
