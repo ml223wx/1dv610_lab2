@@ -3,14 +3,15 @@ import { standardCategories } from "./standardCategories.js"
 
 export class CategoryManager {
 
-      constructor() {
-        console.log("standardsCategories:")
-        console.log(standardCategories)
+  constructor() {
     this.categories = standardCategories
+
   }
 
   addCategory(newCategory){
-    this.doesNotAlreadyExist(newCategory)
+    if (!this.doesAlreadyExist(newCategory)){
+    this.categories.push(newCategory)
+    }
   }
 
   addSubCategory(newSubcategory){
@@ -20,11 +21,8 @@ export class CategoryManager {
     }
   }
 
-  doesNotAlreadyExist(newCategory) {
+  doesAlreadyExist(newCategory) {
     for (let i = 0; i < this.categories.length; i++) {
-      console.log(newCategory.name)
-      console.log(this.categories[i].name)
-      console.log('---')
       if (newCategory.name === this.categories[i].name) {
         console.log('Finns redan - felhantera')
       }

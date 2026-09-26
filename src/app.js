@@ -18,7 +18,7 @@ function main() {
     const categoryManager = new CategoryManager()
     const newTestExpense = new Expense(100, new Date (2026,8,15), "Food", "Snacks", "New test expense")
 
-    // // Adds a new expense:
+    // Adds a new expense:
     expenseManager.addExpense(newTestExpense)
 
     console.log('Gets the sum of all expenses for September:')
