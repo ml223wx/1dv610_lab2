@@ -7,15 +7,13 @@ export class ExpenseManager {
     constructor(expenseHistory, categories) {
     this.expenseHistory = expenseHistory
     this.categories = categories
-    // console.log(expenseHistory)
   }
 
   addExpense(expense){
     if (this.isValid(expense)) {
-      console.log("this.isValid(expense)")
       this.expenseHistory.push(expense)
     } else {
-      console.log("fel - ej valid - felhantera")
+      console.log("isValid() is false in Category.js - implement error handling")
     }
   }
 
@@ -23,39 +21,33 @@ export class ExpenseManager {
 
   }
 
-  getUpdatedExpenseHistory(){
-    return this.expenseHistory
-  }
-
   // JavaScript counts month from 0, meaning that January = 0, December = 11.
   getSumExpensesForMonth(year, month){
-    let expensesForMonth = this.getExpensesByMonth(year, month)
-    let sum = 0
-    for (let i = 0; i < expensesForMonth.length; i++) {
-      sum = sum + expensesForMonth[i].amount
-    }
-    return sum
+    let expensesForMonth = this.getAllExpensesForMonth(year, month)
+    return this.getSum(expensesForMonth)
   }
 
-  getTotalByCategory(year, month, category){
-    const expensesForMonth = this.getExpensesByMonth(year, month)
+  getSumByCategoryAndMonth(year, month, category){
+    const expensesForMonth = this.getAllExpensesForMonth(year, month)
     let expensesInCategory = []
+
     for (let i = 0; i < expensesForMonth.length; i++) {
-      const expense = expensesForMonth[i]
-      if (expense.category === category) {
-      expensesInCategory.push(expense)
+      if (expensesForMonth[i].category === category) {
+      expensesInCategory.push(expensesForMonth[i])
       }
     }
+    return this.getSum(expensesInCategory)
+  }
 
+  getSum (array) {
     let sum = 0
-
-    for (let i = 0; i < expensesInCategory.length; i++) {
-      sum = sum + expensesInCategory[i].amount
+    for (let i = 0; i < array.length; i++) {
+      sum = sum + array[i].amount
     }
     return sum
   }
 
-  getExpensesByMonth(year, month){
+  getAllExpensesForMonth(year, month){
     let expensesForMonth = []
     for (let i = 0; i < this.expenseHistory.length; i++) {
       const expense = this.expenseHistory[i]
@@ -68,7 +60,7 @@ export class ExpenseManager {
   }
 
   getTotalBySubcategory(year, month, subCategory){
-    const expensesForMonth = this.getExpensesByMonth(year, month)
+    const expensesForMonth = this.getAllExpensesForMonth(year, month)
     let expensesInCategory = []
     for (let i = 0; i < expensesForMonth.length; i++) {
       const expense = expensesForMonth[i]
@@ -76,13 +68,13 @@ export class ExpenseManager {
       expensesInCategory.push(expense)
       }
     }
+    return this.getSum(expensesInCategory)
+    // let sum = 0
 
-    let sum = 0
-
-    for (let i = 0; i < expensesInCategory.length; i++) {
-      sum = sum + expensesInCategory[i].amount
-    }
-    return sum
+    // for (let i = 0; i < expensesInCategory.length; i++) {
+    //   sum = sum + expensesInCategory[i].amount
+    // }
+    // return sum
 
   }
 

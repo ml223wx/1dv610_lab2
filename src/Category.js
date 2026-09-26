@@ -16,12 +16,6 @@ export class Category {
 
   hasSubcategory(subcategoryName){
     for (i = 0; i < this.subCategories.length; i++) {
-      console.log("this.subCategories[i]")
-      console.log(this.subCategories[i])
-      console.log("subCategoryName")
-      console.log(subCategoryName)
-      console.log("true or false:")
-      console.log(this.subcCategories[i] === subcategoryName)
       return this.subCategories[i] === subcategoryName
     }
   }

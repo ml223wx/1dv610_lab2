@@ -37,7 +37,7 @@ function main() {
     console.log(expenseManager.getSumExpensesForMonth(2026, 8))
 
     console.log('Gets all "Food" category expenses for September: ')
-    console.log(expenseManager.getTotalByCategory(2026, 8, 'Food'))
+    console.log(expenseManager.getSumByCategoryAndMonth(2026, 8, 'Food'))
 
     // Adds a category:
     // Each category has to have at least 1 sub category
