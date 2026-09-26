@@ -1,19 +1,10 @@
 #!/usr/bin/env node
 
-import { mockExpenseHistory, testIfIsExported } from "./mockExpenseHistory.js"
+import { mockExpenseHistory } from "./mockExpenseHistory.js"
 import { Expense } from "./Expense.js"
 import { ExpenseManager } from "./ExpenseManager.js"
 import "./Category.js"
 import { CategoryManager} from "./CategoryManager.js"
-
-/**
- * A sub-category of purchases.
- */
-export class Subcategory {
-  constructor(name) {
-    this.name = name
-  }
-}
 
 /**
  * Execution entry point.
@@ -29,13 +20,13 @@ function main() {
     const newTestExpense2 = new Expense(100, new Date (2026,6,15), "FelFood", "Snacks", "New test expense")
     // expenseManager.addExpense(newTestExpense1)
     // console.log('mockExpenseHistory efter push:')
-    // console.log(mockExpenseHistory)
+    console.log(mockExpenseHistory)
     // expenseManager.addExpense(testExpense2)
     // expenseManager.getSumExpensesForMonth(2026, 7)
     // expenseManager.getTotalByCategory(2026, 7, "Mat")
     // expenseManager.addExpense(newTestExpense1)
     // expenseManager.addExpense(newTestExpense2)
-    categoryManager.addSubCategory("hello")
+    // categoryManager.addSubCategory("hello")
 
 
 
