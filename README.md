@@ -1,4 +1,5 @@
 ExpenseHistory laddar in Expense-objekt i en array, i JSON-format.
+Datum fungerar så att September månad är 8, eftersom Januari är 0.
 
 
 

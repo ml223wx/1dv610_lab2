@@ -3,6 +3,12 @@ import { standardCategories } from "./standardCategories.js"
 
 export class CategoryManager {
 
+      constructor() {
+        console.log("standardsCategories:")
+        console.log(standardCategories)
+    this.standardCategories = standardCategories
+  }
+
   addSubCategory(newSubcategory){
     //     console.log("standardCategories")
     // console.log(standardCategories)

@@ -6,7 +6,8 @@ import { standardCategories} from "./standardCategories.js"
  */
 export class ExpenseManager {
     constructor(expenseHistory) {
-    this.expenseHistory = JSON.parse(expenseHistory)
+    this.expenseHistory = expenseHistory
+    // console.log(expenseHistory)
   }
 
   addExpense(expense){
@@ -92,9 +93,6 @@ export class ExpenseManager {
   }
 
   isValid(expense){
-    // console.log("expense:")
-    // console.log(expense)
-    // console.log(categories)
     for (let i = 0; i < standardCategories.length; i++) {
     if (standardCategories[i].name === expense.category){
       console.log("category är category dvs truuue")

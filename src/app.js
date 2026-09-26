@@ -1,34 +1,43 @@
 #!/usr/bin/env node
 
-import { mockExpenseHistory } from "./mockExpenseHistory.js"
+// import { mockExpenseHistory } from "./mockExpenseHistory.js"
 import { Expense } from "./Expense.js"
 import { ExpenseManager } from "./ExpenseManager.js"
 import "./Category.js"
 import { CategoryManager} from "./CategoryManager.js"
+import { mockExpenseHistory } from "./JSONExpensesHistoryConverter.js"
 
 /**
  * Execution entry point.
  */
 function main() {
   console.log('🚀 Application is up and running!')
-  // console.log(mockExpenseHistory)
 
   try {
     const expenseManager = new ExpenseManager(mockExpenseHistory)
     const categoryManager = new CategoryManager()
-    const newTestExpense1 = new Expense(100, new Date (2026,7,15), "Food", "Snacks", "New test expense")
-    const newTestExpense2 = new Expense(100, new Date (2026,6,15), "FelFood", "Snacks", "New test expense")
-    // expenseManager.addExpense(newTestExpense1)
-    // console.log('mockExpenseHistory efter push:')
-    // console.log(mockExpenseHistory)
-    // expenseManager.addExpense(testExpense2)
-    // expenseManager.getSumExpensesForMonth(2026, 7)
-    // expenseManager.getTotalByCategory(2026, 7, "Mat")
-    // expenseManager.addExpense(newTestExpense1)
-    // expenseManager.addExpense(newTestExpense2)
-    // categoryManager.addSubCategory("hello")
-    console.log(expenseManager.expenseHistory[2])
+    const newTestExpense = new Expense(100, new Date (2026,8,15), "Food", "Snacks", "New test expense")
 
+    // // Adds a new expense:
+    expenseManager.addExpense(newTestExpense)
+
+    console.log('Gets the sum of all expenses for September:')
+    console.log(expenseManager.getSumExpensesForMonth(2026, 8))
+
+    // console.log('Gets all "Food" category expenses for September: ')
+    // expenseManager.getTotalByCategory(2026, 8, 'Food')
+
+    // Adds a category:
+    // TO-DO ...
+
+    // Adds a sub category:
+    // TO-DO ...
+
+    // console.log('Prints all categories:')
+    // TO-DO ...
+
+    // console.log('Prints all sub categories:')
+    // TO-DO ...
 
 
   } catch (error) {
