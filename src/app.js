@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 
-import { Expense } from "./Expense.js"
-import { ExpenseManager } from "./ExpenseManager.js"
 import { Category } from "./Category.js"
 import { CategoryManager} from "./CategoryManager.js"
-import { JSONExpensesHistoryConverter } from "./JSONExpensesHistoryConverter.js"
+import { Expense } from "./Expense.js"
+import { ExpenseManager } from "./ExpenseManager.js"
 import { JSONCategoriesConverter } from "./JSONcategoriesConverter.js"
-import { JSONstandardCategories} from "./standardCategories.js"
-import { JSONMockExpenseHistory } from "./mockExpenseHistory.js"
+import { JSONExpensesHistoryConverter } from "./JSONExpensesHistoryConverter.js"
+import JSONMockExpenseHistory from "./mockExpenseHistory.json" with { type: "json" }
+import JSONStandardCategories from "./standardCategories.json" with { type: "json" }
 
 /**
  * Execution entry point.
@@ -16,14 +16,18 @@ function main() {
   console.log('🚀 Application is up and running!')
 
   try {
-    const expensesHistory = (new JSONExpensesHistoryConverter(JSONMockExpenseHistory)).getExpensesHistory()
-    // const expensesHistory = expensesHistoryObject.getExpensesHistory()
 
-    const categoriesObject = new JSONCategoriesConverter(JSONstandardCategories)
-    const categories = categoriesObject.getCategories()
+    // Assign which JSON-data is to be read as expense history:
+    const expenseHistoryFile = JSONMockExpenseHistory
+    // Assign which JSON-data is to be read as categories:
+    const categoriesFile = JSONStandardCategories
+
+    const expensesHistory = new JSONExpensesHistoryConverter(expenseHistoryFile).getExpensesHistory()
+    const categories = new JSONCategoriesConverter(categoriesFile).getCategories()
 
     const expenseManager = new ExpenseManager(expensesHistory, categories)
     const categoryManager = new CategoryManager(categories)
+
     const newTestExpense = new Expense(100, new Date (2026,8,15), "Food", "Snacks", "New test expense")
 
     // Adds a new expense:
