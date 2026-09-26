@@ -20,13 +20,14 @@ function main() {
     const newTestExpense2 = new Expense(100, new Date (2026,6,15), "FelFood", "Snacks", "New test expense")
     // expenseManager.addExpense(newTestExpense1)
     // console.log('mockExpenseHistory efter push:')
-    console.log(mockExpenseHistory)
+    // console.log(mockExpenseHistory)
     // expenseManager.addExpense(testExpense2)
     // expenseManager.getSumExpensesForMonth(2026, 7)
     // expenseManager.getTotalByCategory(2026, 7, "Mat")
     // expenseManager.addExpense(newTestExpense1)
     // expenseManager.addExpense(newTestExpense2)
     // categoryManager.addSubCategory("hello")
+    console.log(expenseManager.expenseHistory[2])
 
 
 

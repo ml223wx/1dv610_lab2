@@ -1,4 +1,8 @@
-## Miranda testar commits.
+ExpenseHistory laddar in Expense-objekt i en array, i JSON-format.
+
+
+
+--------------------------
 
 # JavaScript CLI Template
 

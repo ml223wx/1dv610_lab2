@@ -6,7 +6,7 @@ import { standardCategories} from "./standardCategories.js"
  */
 export class ExpenseManager {
     constructor(expenseHistory) {
-    this.expenseHistory = expenseHistory
+    this.expenseHistory = JSON.parse(expenseHistory)
   }
 
   addExpense(expense){
