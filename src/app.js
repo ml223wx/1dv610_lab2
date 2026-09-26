@@ -3,7 +3,7 @@
 // import { mockExpenseHistory } from "./mockExpenseHistory.js"
 import { Expense } from "./Expense.js"
 import { ExpenseManager } from "./ExpenseManager.js"
-import "./Category.js"
+import {Category} from "./Category.js"
 import { CategoryManager} from "./CategoryManager.js"
 import { mockExpenseHistory } from "./JSONExpensesHistoryConverter.js"
 
@@ -24,14 +24,17 @@ function main() {
     console.log('Gets the sum of all expenses for September:')
     console.log(expenseManager.getSumExpensesForMonth(2026, 8))
 
-    // console.log('Gets all "Food" category expenses for September: ')
-    // expenseManager.getTotalByCategory(2026, 8, 'Food')
+    console.log('Gets all "Food" category expenses for September: ')
+    console.log(expenseManager.getTotalByCategory(2026, 8, 'Food'))
 
     // Adds a category:
-    // TO-DO ...
+    // Has to have at least 1 sub category
+    const newCategory =  new Category("Health & Beauty", ["Beauty", "Healthcare"])
+    categoryManager.addCategory(newCategory)
 
     // Adds a sub category:
     // TO-DO ...
+    // Medication
 
     // console.log('Prints all categories:')
     // TO-DO ...

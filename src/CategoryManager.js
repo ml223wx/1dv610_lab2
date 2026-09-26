@@ -6,19 +6,28 @@ export class CategoryManager {
       constructor() {
         console.log("standardsCategories:")
         console.log(standardCategories)
-    this.standardCategories = standardCategories
+    this.categories = standardCategories
+  }
+
+  addCategory(newCategory){
+    this.doesNotAlreadyExist(newCategory)
   }
 
   addSubCategory(newSubcategory){
-    //     console.log("standardCategories")
-    // console.log(standardCategories)
-    for (let i = 0; i < standardCategories.length; i++) {
-                  console.log("standardCategories.subCategories[i]")
-            console.log(standardCategories[i])
-          for (let j = 0; j < standardCategories.subCategories.length; j++) {
-            console.log("standardCategories.subCategories[j]")
-            console.log(standardCategories.subCategories[j])
+    for (let i = 0; i < categories.length; i++) {
+      for (let j = 0; j < categories.subCategories.length; j++) {
+      }
     }
+  }
+
+  doesNotAlreadyExist(newCategory) {
+    for (let i = 0; i < this.categories.length; i++) {
+      console.log(newCategory.name)
+      console.log(this.categories[i].name)
+      console.log('---')
+      if (newCategory.name === this.categories[i].name) {
+        console.log('Finns redan - felhantera')
+      }
     }
   }
 }

@@ -24,7 +24,6 @@ import { Category } from "./Category.js"
 export const standardCategories = [
   new Category("Communication", ["Post", "Telephone"]),
   new Category("Food", ["Groceries", "Restaurant", "Snacks"]),
-  new Category("Health & Beauty", ["Beauty", "Healthcare"]),
   new Category("Hobby", ["Crafts", "Vacation", "Events", "Subscriptions"]),
   new Category("Household", ["Consumables", "Decor"]),
   new Category("Shopping", ["Clothes & accessories", "Stationaries"]),
