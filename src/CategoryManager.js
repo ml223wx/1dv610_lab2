@@ -1,10 +1,7 @@
-import { Category } from "./Category.js"
-import { standardCategories } from "./standardCategories.js"
-
 export class CategoryManager {
 
-  constructor() {
-    this.categories = standardCategories
+  constructor(categories) {
+    this.categories = categories
 
   }
 
@@ -14,19 +11,11 @@ export class CategoryManager {
     }
   }
 
-  // addSubCategory(categoryName, newSubcategory){
-  //   for (let i = 0; i < categories.length; i++) {
-  //     for (let j = 0; j < categories.subCategories.length; j++) {
-  //     }
-  //   }
-  // }
-
   addSubCategory (mainCategoryName, newSubcategory) {
     if (this.alreadyExists(mainCategoryName)) {
       const category = this.findCategoryObject(mainCategoryName)
       category.subCategories.push(newSubcategory)
     }
-
   }
 
   alreadyExists(categoryName) {
@@ -45,6 +34,4 @@ export class CategoryManager {
       }
     }
   }
-
-
 }

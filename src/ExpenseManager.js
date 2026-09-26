@@ -1,12 +1,12 @@
 import "./Category.js"
-import { standardCategories} from "./standardCategories.js"
 
 /**
  * Handling the user's expenses and statistics.
  */
 export class ExpenseManager {
-    constructor(expenseHistory) {
+    constructor(expenseHistory, categories) {
     this.expenseHistory = expenseHistory
+    this.categories = categories
     // console.log(expenseHistory)
   }
 
@@ -52,22 +52,18 @@ export class ExpenseManager {
     for (let i = 0; i < expensesInCategory.length; i++) {
       sum = sum + expensesInCategory[i].amount
     }
-    // console.log("returnerar sum:")
-    // console.log(sum)
     return sum
   }
 
   getExpensesByMonth(year, month){
-        let expensesForMonth = []
+    let expensesForMonth = []
     for (let i = 0; i < this.expenseHistory.length; i++) {
       const expense = this.expenseHistory[i]
       const expensesDate = expense.date
-      if (expensesDate.getFullYear() === year & expensesDate.getMonth() === month) {
+        if (expensesDate.getFullYear() === year & expensesDate.getMonth() === month) {
       expensesForMonth.push(expense)
       }
     }
-    // console.log("returnerar expensesForMonth:")
-    // console.log(expensesForMonth)
     return expensesForMonth
   }
 
@@ -86,18 +82,15 @@ export class ExpenseManager {
     for (let i = 0; i < expensesInCategory.length; i++) {
       sum = sum + expensesInCategory[i].amount
     }
-    // console.log("returnerar sum:")
-    // console.log(sum)
     return sum
 
   }
 
   isValid(expense){
-    for (let i = 0; i < standardCategories.length; i++) {
-    if (standardCategories[i].name === expense.category){
-      console.log("category är category dvs truuue")
-      return true
-    }
+    for (let i = 0; i < this.categories.length; i++) {
+      if (this.categories[i].name === expense.category){
+        return true
+      }
     }
   }
 }
