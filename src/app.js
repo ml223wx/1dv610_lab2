@@ -39,16 +39,19 @@ function main() {
     console.log('Gets all "Food" category expenses for September: ')
     console.log(expenseManager.getSumByCategoryAndMonth(2026, 8, 'Food'))
 
+    console.log('Gets all "Food" - "Restaurant" sub category expenses for July: ')
+    console.log(expenseManager.getTotalBySubcategory(2026, 6, 'Restaurant'))
+
     // Adds a category:
     // Each category has to have at least 1 sub category
     const newCategory =  new Category("Health & Beauty", ["Beauty", "Healthcare"])
     categoryManager.addCategory(newCategory)
 
-    // Adds a sub category:
-    categoryManager.addSubCategory("Health & Beauty", "Medication")
+    // // Adds a sub category:
+    // categoryManager.addSubCategory("Health & Beauty", "Medication")
 
-    console.log('All categories:')
-    console.log(categoryManager.categories)
+    // console.log('All categories:')
+    // console.log(categoryManager.categories)
 
   } catch (error) {
     console.error('An unexpected error occurred during execution:', error.message)

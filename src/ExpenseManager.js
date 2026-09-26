@@ -10,15 +10,11 @@ export class ExpenseManager {
   }
 
   addExpense(expense){
-    if (this.isValid(expense)) {
+    if (this.categoryExists(expense)) {
       this.expenseHistory.push(expense)
     } else {
-      console.log("isValid() is false in Category.js - implement error handling")
+      console.log("categoryExists() is false in Category.js - implement error handling")
     }
-  }
-
-  removeExpense(){
-
   }
 
   // JavaScript counts month from 0, meaning that January = 0, December = 11.
@@ -60,25 +56,18 @@ export class ExpenseManager {
   }
 
   getTotalBySubcategory(year, month, subCategory){
-    const expensesForMonth = this.getAllExpensesForMonth(year, month)
-    let expensesInCategory = []
-    for (let i = 0; i < expensesForMonth.length; i++) {
-      const expense = expensesForMonth[i]
-      if (expense.subCategory === subCategory) {
-      expensesInCategory.push(expense)
+    const allExpensesForMonth = this.getAllExpensesForMonth(year, month)
+    let expensesInCategoryForMonth = []
+
+    for (let i = 0; i < allExpensesForMonth.length; i++) {
+      if (allExpensesForMonth[i].subCategory === subCategory) {
+      expensesInCategoryForMonth.push(allExpensesForMonth[i])
       }
     }
-    return this.getSum(expensesInCategory)
-    // let sum = 0
-
-    // for (let i = 0; i < expensesInCategory.length; i++) {
-    //   sum = sum + expensesInCategory[i].amount
-    // }
-    // return sum
-
+    return this.getSum(expensesInCategoryForMonth)
   }
 
-  isValid(expense){
+  categoryExists(expense){
     for (let i = 0; i < this.categories.length; i++) {
       if (this.categories[i].name === expense.category){
         return true
