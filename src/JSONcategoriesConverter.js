@@ -1,7 +1,15 @@
-import { JSONstandardCategories } from "./standardCategories.js"
 import { Category } from "./Category.js"
 
-// From chatGPT:
-export const categories = JSONstandardCategories.map(
+
+export class JSONCategoriesConverter {
+  constructor (categories) {
+    this.categories = categories.map(
   category => new Category(category.name, category.subCategories)
-)
+    )
+  }
+
+  getCategories() {
+    return this.categories
+  }
+
+}

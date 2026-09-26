@@ -5,7 +5,7 @@ import { ExpenseManager } from "./ExpenseManager.js"
 import { Category } from "./Category.js"
 import { CategoryManager} from "./CategoryManager.js"
 import { JSONExpensesHistoryConverter } from "./JSONExpensesHistoryConverter.js"
-import { categories } from "./JSONcategoriesConverter.js"
+import { JSONCategoriesConverter } from "./JSONcategoriesConverter.js"
 import { JSONstandardCategories} from "./standardCategories.js"
 import { JSONMockExpenseHistory } from "./mockExpenseHistory.js"
 
@@ -16,9 +16,12 @@ function main() {
   console.log('🚀 Application is up and running!')
 
   try {
-    const expensesHistoryObject = new JSONExpensesHistoryConverter(JSONMockExpenseHistory)
-    const expensesHistory = expensesHistoryObject.getExpensesHistory()
-    
+    const expensesHistory = (new JSONExpensesHistoryConverter(JSONMockExpenseHistory)).getExpensesHistory()
+    // const expensesHistory = expensesHistoryObject.getExpensesHistory()
+
+    const categoriesObject = new JSONCategoriesConverter(JSONstandardCategories)
+    const categories = categoriesObject.getCategories()
+
     const expenseManager = new ExpenseManager(expensesHistory, categories)
     const categoryManager = new CategoryManager(categories)
     const newTestExpense = new Expense(100, new Date (2026,8,15), "Food", "Snacks", "New test expense")
