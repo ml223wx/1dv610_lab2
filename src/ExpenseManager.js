@@ -52,17 +52,19 @@ export class ExpenseManager {
     for (let i = 0; i < this.expenseHistory.length; i++) {
       const expense = this.expenseHistory[i]
       const expensesDate = expense.date
-        if (this.isExpensesDateYearSameYearExpensesMonthSameMonth(expensesDate.getFullYear(), year,expensesDate.getMonth(), month)) {
+        if (this.isExpensesDateYearSameYear(expensesDate.getFullYear(), year) && this.isExpensesMonthSameMonth(expensesDate.getMonth(), month)) {
       expensesForMonth.push(expense)
       }
     }
     return expensesForMonth
   }
 
-  isExpensesDateYearSameYearExpensesMonthSameMonth (expensesFullYear, year, expensesMonth, month) {
-    console.log("testar expensesFullYear ===  year && expensesMonth === month")
-    console.log(expensesFullYear ===  year && expensesMonth === month)
-    return expensesFullYear ===  year && expensesMonth === month
+  isExpensesDateYearSameYear (expensesFullYear, year) {
+    return expensesFullYear ===  year
+  }
+
+  isExpensesMonthSameMonth(expensesMonth, month) {
+    return expensesMonth === month
   }
 
   getTotalBySubcategory(year, month, subCategory){
