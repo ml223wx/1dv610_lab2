@@ -28,14 +28,14 @@ export class ExpenseManager {
     let expensesInCategory = []
 
     for (let i = 0; i < expensesForMonth.length; i++) {
-      if (this.isCategoryInArraySameCategoryToCompare) {
+      if (this.isCategoryInArraySameCategory(expensesForMonth[i].category, category)) {
       expensesInCategory.push(expensesForMonth[i])
       }
     }
     return this.getSum(expensesInCategory)
   }
 
-  isCategoryInArraySameCategoryToCompare(categoryInArray, categoryToCompare){
+  isCategoryInArraySameCategory(categoryInArray, categoryToCompare){
     return categoryInArray === categoryToCompare
   }
 
@@ -52,11 +52,17 @@ export class ExpenseManager {
     for (let i = 0; i < this.expenseHistory.length; i++) {
       const expense = this.expenseHistory[i]
       const expensesDate = expense.date
-        if (expensesDate.getFullYear() === year & expensesDate.getMonth() === month) {
+        if (this.isExpensesDateYearSameYearExpensesMonthSameMonth(expensesDate.getFullYear(), year,expensesDate.getMonth(), month)) {
       expensesForMonth.push(expense)
       }
     }
     return expensesForMonth
+  }
+
+  isExpensesDateYearSameYearExpensesMonthSameMonth (expensesFullYear, year, expensesMonth, month) {
+    console.log("testar expensesFullYear ===  year && expensesMonth === month")
+    console.log(expensesFullYear ===  year && expensesMonth === month)
+    return expensesFullYear ===  year && expensesMonth === month
   }
 
   getTotalBySubcategory(year, month, subCategory){
