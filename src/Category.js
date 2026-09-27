@@ -6,12 +6,9 @@ export class Category {
     this.name = name
     this.subCategories = subCategories
   }
+  
   addSubcategory(subCategoryName){
     this.subCategories.push(subCategoryName)
-  }
-
-  getSubcategories() {
-    return this.subCategories
   }
 
   hasSubcategory(subcategoryName){

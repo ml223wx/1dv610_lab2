@@ -33,6 +33,8 @@ function main() {
     // Adds a new expense:
     expenseManager.addExpense(newTestExpense)
 
+    // Javascript counts the 8th month as September, since the 0th is January.
+
     console.log('Gets the sum of all expenses for September:')
     console.log(expenseManager.getSumExpensesForMonth(2026, 8))
 

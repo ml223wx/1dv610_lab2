@@ -28,11 +28,15 @@ export class ExpenseManager {
     let expensesInCategory = []
 
     for (let i = 0; i < expensesForMonth.length; i++) {
-      if (expensesForMonth[i].category === category) {
+      if (this.isCategoryInArraySameCategoryToCompare) {
       expensesInCategory.push(expensesForMonth[i])
       }
     }
     return this.getSum(expensesInCategory)
+  }
+
+  isCategoryInArraySameCategoryToCompare(categoryInArray, categoryToCompare){
+    return categoryInArray === categoryToCompare
   }
 
   getSum (array) {
