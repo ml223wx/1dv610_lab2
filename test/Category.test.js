@@ -9,7 +9,6 @@ describe("CategoryManager", () => {
     const newCategory = new Category('Electronics', ['Phone'])
     newCategory.addSubCategory('Laptop')
     expect(newCategory.subCategories).toContain('Laptop')
-
   })
 
   it("returns true if a sub category exists", () => {
