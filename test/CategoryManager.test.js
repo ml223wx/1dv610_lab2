@@ -24,5 +24,4 @@ describe("CategoryManager", () => {
     expect(categoryManager.findCategoryObject('Electronics').subCategories).toContain('Laptop')
   })
 
-
 })

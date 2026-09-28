@@ -13,7 +13,9 @@ export class ExpenseManager {
     if (this.categoryExists(expense)) {
       this.expenseHistory.push(expense)
     } else {
-      console.log("categoryExists() is false in Category.js - implement error handling")
+      throw new Error (
+      `Category "${expense.category}" does not exist.`
+      )
     }
   }
 

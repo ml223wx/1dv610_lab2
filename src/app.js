@@ -35,17 +35,30 @@ function main() {
 
     // Javascript counts the 8th month as September, since the 0th is January.
 
-    console.log('Gets the sum of all expenses for September:')
-    console.log(expenseManager.getSumExpensesForMonth(2026, 8))
+    try {
+      console.log('Gets the sum of all expenses for September:')
+      console.log(expenseManager.getSumExpensesForMonth(2026, 8))
+    } catch (error) {
+      console.error(error.message)
+    }
 
+    try {
     console.log('Gets all "Food" category expenses for September: ')
     console.log(expenseManager.getSumByCategoryAndMonth(2026, 8, 'Food'))
+    } catch (error) {
+      console.error(error.message)
+    }
 
+    try {
     console.log('Gets all "Food" - "Restaurant" sub category expenses for July: ')
     console.log(expenseManager.getTotalBySubcategory(2026, 6, 'Restaurant'))
+    } catch (error) {
+      console.error(error.message)
+    }
 
     // Adds a category:
     // Each category has to have at least 1 sub category
+    
     const newCategory =  new Category("Health & Beauty", ["Beauty", "Healthcare"])
     categoryManager.addCategory(newCategory)
 

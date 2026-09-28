@@ -19,7 +19,7 @@ describe("ExpenseManager", () => {
     expect(expenseManager.getSumExpensesForMonth(2026, 8)).toBe(100)
   })
 
-  it("checks that an expense added with a non-existing subcategory returns falsy", () => {
+  it("checks that an expense added with a non-existing category throws an error", () => {
     const expenseManager = new ExpenseManager([],   [{
       "name": "Food",
       "subCategories": ["Groceries", "Restaurant", "Snacks"]
@@ -27,9 +27,10 @@ describe("ExpenseManager", () => {
 
     const expense = new Expense(100, new Date (2026,8,15), "Wrong", "Snacks", "New test expense")
 
-    expenseManager.addExpense(expense)
-
-    expect(expenseManager.getSumExpensesForMonth(2026, 8)).toBe(0)
+    // From chatGPT:
+    expect(() => {
+      expenseManager.addExpense(expense)
+        }).toThrow('Category "Wrong" does not exist.')
   })
 
 
