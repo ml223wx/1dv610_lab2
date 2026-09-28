@@ -97,6 +97,6 @@ describe("ExpenseManager", () => {
     expenseManager.addExpense(expense2)
     expenseManager.addExpense(expense3)
 
-    expect(expenseManager.getTotalBySubcategory(2026, 8, "Snacks")).toBe(300)
+    expect(expenseManager.getTotalBySubCategory(2026, 8, "Snacks")).toBe(300)
   })
 })

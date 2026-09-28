@@ -72,7 +72,7 @@ export class ExpenseManager {
     return expensesMonth === month
   }
 
-  getTotalBySubcategory(year, month, subCategory){
+  getTotalBySubCategory(year, month, subCategory){
     const allExpensesForMonth = this.getAllExpensesForMonth(year, month)
     let expensesInCategoryForMonth = []
 

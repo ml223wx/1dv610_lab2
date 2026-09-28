@@ -11,7 +11,7 @@ export class JSONExpensesHistoryConverter {
         expense.amount,
         new Date(expense.date),
         expense.category,
-        expense.subcategory,
+        expense.subCategory,
         expense.description
       )
     )

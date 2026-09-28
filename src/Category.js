@@ -6,14 +6,17 @@ export class Category {
     this.name = name
     this.subCategories = subCategories
   }
-  
-  addSubcategory(subCategoryName){
+
+  addSubCategory(subCategoryName){
     this.subCategories.push(subCategoryName)
   }
 
-  hasSubcategory(subcategoryName){
-    for (i = 0; i < this.subCategories.length; i++) {
-      return this.subCategories[i] === subcategoryName
+  hasSubcategory(subCategoryName){
+    for (let i = 0; i < this.subCategories.length; i++) {
+      if (this.subCategories[i] === subCategoryName) {
+        return true
+      }
+      return false
     }
   }
 }

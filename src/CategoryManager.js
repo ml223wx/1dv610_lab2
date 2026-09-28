@@ -11,10 +11,10 @@ export class CategoryManager {
     }
   }
 
-  addSubCategory (mainCategoryName, newSubcategory) {
+  addSubCategory (mainCategoryName, newSubCategory) {
     if (this.alreadyExists(mainCategoryName)) {
       const category = this.findCategoryObject(mainCategoryName)
-      category.subCategories.push(newSubcategory)
+      category.subCategories.push(newSubCategory)
     }
   }
 
