@@ -27,36 +27,26 @@ export class ExpenseManager {
 
   getSumByCategoryAndMonth(year, month, categoryName){
     const expensesForMonth = this.getAllExpensesForMonth(year, month)
-    const expensesInCategory = this.getExpensesSameCategory(expensesForMonth, categoryName)
+    const expensesInCategory = this.getExpensesSameCategory(expensesForMonth, categoryName, 'category')
     return this.getSum(expensesInCategory)
   }
 
-  getExpensesSameCategory(expenses, categoryName){
+  getExpensesSameCategory(expenses, categoryName, propertyName){
     let expensesInCategory = []
 
       for (let i = 0; i < expenses.length; i++) {
-        if (expenses[i].category === categoryName) {
+        if (expenses[i][propertyName] === categoryName) {
           expensesInCategory.push(expenses[i])
         }
       }
     return expensesInCategory
   }
 
-  getSum (array) {
-    let sum = 0
-    for (let i = 0; i < array.length; i++) {
-      sum = sum + array[i].amount
-    }
-    return sum
-  }
-
   getAllExpensesForMonth(year, month){
     let expensesForMonth = []
 
     for (let i = 0; i < this.expenseRecord.length; i++) {
-     const isExpenseInMonth = this.isExpenseInMonth(this.expenseRecord[i].date, year, month)
-
-     if (isExpenseInMonth) {
+     if (this.isExpenseInMonth(this.expenseRecord[i].date, year, month)) {
       expensesForMonth.push(this.expenseRecord[i])
      }
     }
@@ -64,19 +54,10 @@ export class ExpenseManager {
     return expensesForMonth
   }
 
-  isExpenseInMonth(expenseDate, year, month){
-    return expenseDate.getFullYear() === year && expenseDate.getMonth() == month
-  }
-
-  getTotalBySubCategory(year, month, subCategory){
+  getTotalBySubCategory(year, month, subCategoryName){
     const allExpensesForMonth = this.getAllExpensesForMonth(year, month)
-    let expensesInCategoryForMonth = []
 
-    for (let i = 0; i < allExpensesForMonth.length; i++) {
-      if (allExpensesForMonth[i].subCategory === subCategory) {
-      expensesInCategoryForMonth.push(allExpensesForMonth[i])
-      }
-    }
+    const expensesInCategoryForMonth = this.getExpensesSameCategory(allExpensesForMonth, subCategoryName, 'subCategory')
     return this.getSum(expensesInCategoryForMonth)
   }
 
@@ -86,5 +67,17 @@ export class ExpenseManager {
         return true
       }
     }
+  }
+
+  isExpenseInMonth(expenseDate, year, month){
+    return expenseDate.getFullYear() === year && expenseDate.getMonth() == month
+  }
+
+  getSum (array) {
+    let sum = 0
+    for (let i = 0; i < array.length; i++) {
+      sum = sum + array[i].amount
+    }
+    return sum
   }
 }
