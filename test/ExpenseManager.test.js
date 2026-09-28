@@ -21,45 +21,45 @@ describe("ExpenseManager", () => {
     })
 
 
-    // it("calculates total for a category", () => {
-    //     const expense1 = new Expense(
-    //         100,
-    //         new Date(2026, 7, 14),
-    //         "Transportation",
-    //         "Public transportation",
-    //         "Train"
-    //     )
+    it("calculates total for a category for a specific month", () => {
+        const expense1 = new Expense(
+            500,
+            new Date(2026, 7, 3),
+            "Food",
+            "Groceries",
+            ""
+        )
 
-    //     const expense2 = new Expense(
-    //         200,
-    //         new Date(2026, 7, 14),
-    //         "Food",
-    //         "Restaurant",
-    //         "Burger"
-    //     )
+        const expense2 = new Expense(
+            200,
+            new Date(2026, 7, 14),
+            "Food",
+            "Restaurant",
+            "Burger"
+        )
 
-    //     const expense3 = new Expense(
-    //         500,
-    //         new Date(2026, 7, 14),
-    //         "Hobby",
-    //         "Crafts",
-    //         "Yarn"
-    //     )
+        const expense3 = new Expense(
+            100,
+            new Date(2026, 7, 19),
+            "Food",
+            "Snacks",
+            "Chips"
+        )
 
-    //     const manager = new ExpenseManager([
-    //         expense1,
-    //         expense2,
-    //         expense3
-    //     ])
+        const manager = new ExpenseManager([
+            expense1,
+            expense2,
+            expense3
+        ])
 
-    //     const result = manager.getTotalByCategory(
-    //         2026,
-    //         7,
-    //         "Food"
-    //     )
+        const result = manager.getSumByCategoryAndMonth(
+            2026,
+            7,
+            "Food"
+        )
 
-    //     expect(result).toBe(300)
-    // })
+        expect(result).toBe(800)
+    })
 
 
     // it("returns expenses for a specific month", () => {
