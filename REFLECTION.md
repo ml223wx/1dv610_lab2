@@ -22,7 +22,7 @@
 
 |isExpensesDateYearSameYearExpensesMonthSameMonth()|  isExpensesDateYearSameYearExpensesMonthSameMonth (expensesFullYear, year, expensesMonth, month) {
     return expensesFullYear ===  year && expensesMonth === month
-  }|Refaktorering in absurdum för att höja abstraktionsnivån. Istället för "if(expensesFullYear === year && expensesMonth == month) {}" skapade jag en ny funktion som behövde ha ett väldigt långt namn för att vara lättförstådd, vilket gör koden svårare att läsa. Detta för att jag försökte följa bokens förslag på namngivning när man genomför jämförelser, för att komma ihåg i vilken ordning man ska skriva in argumenten. Boken hävdar att ju färre argument en funktion tar in, desto bättre. Därför bröt jag ut det till två separata funktioner, en som jämförde år och en som jämförde månader. ||
+  }|Refaktorering in absurdum för att höja abstraktionsnivån. Istället för "if(expensesFullYear === year && expensesMonth == month) {}" skapade jag en ny funktion som behövde ha ett väldigt långt namn för att vara lättförstådd, vilket gör koden svårare att läsa. Detta för att jag försökte följa bokens förslag på namngivning när man genomför jämförelser, för att komma ihåg i vilken ordning man ska skriva in argumenten. Boken hävdar att ju färre argument en funktion tar in, desto bättre. Därför bröt jag ut det till två separata funktioner, en som jämförde år och en som jämförde månader. På så sätt behövde funktionen bara ta in två argument. ||
 
 ### Kapitelreflektion kap 3
 Min största fundering gällande kapitel 3 är regeln/riktlinjen om att man ska ha så få parametrar som möjligt när man skriver funktioner.
