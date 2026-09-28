@@ -55,6 +55,12 @@ function main() {
     // console.log('All categories:')
     // console.log(categoryManager.categories)
 
+    const hejhej = expenseManager.getAllExpensesForMonth()
+    console.log("hej hej:")
+    console.log(hejhej)
+
+    console.log(expenseManager.getAllExpensesForMonth(2026, 6))
+
   } catch (error) {
     console.error('An unexpected error occurred during execution:', error.message)
     process.exitCode = 1
