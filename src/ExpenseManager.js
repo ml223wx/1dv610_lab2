@@ -49,7 +49,7 @@ export class ExpenseManager {
     return sum
   }
 
-  getAllExpensesForMonth(year, month){
+  getSumExpensesForMonth(year, month){
     let expensesForMonth = []
     for (let i = 0; i < this.expenseHistory.length; i++) {
       const expense = this.expenseHistory[i]
