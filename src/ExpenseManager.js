@@ -4,14 +4,14 @@ import "./Category.js"
  * Handling the user's expenses and statistics.
  */
 export class ExpenseManager {
-    constructor(expenseHistory, categories) {
-    this.expenseHistory = expenseHistory
+    constructor(expenseRecord, categories) {
+    this.expenseRecord = expenseRecord
     this.categories = categories
   }
 
   addExpense(expense){
     if (this.categoryExists(expense)) {
-      this.expenseHistory.push(expense)
+      this.expenseRecord.push(expense)
     } else {
       throw new Error (
       `Category "${expense.category}" does not exist.`
@@ -25,20 +25,21 @@ export class ExpenseManager {
     return this.getSum(expensesForMonth)
   }
 
-  getSumByCategoryAndMonth(year, month, category){
+  getSumByCategoryAndMonth(year, month, categoryName){
     const expensesForMonth = this.getAllExpensesForMonth(year, month)
-    let expensesInCategory = []
-
-    for (let i = 0; i < expensesForMonth.length; i++) {
-      if (this.isCategoryInArraySameCategory(expensesForMonth[i].category, category)) {
-      expensesInCategory.push(expensesForMonth[i])
-      }
-    }
+    const expensesInCategory = this.getExpensesSameCategory(expensesForMonth, categoryName)
     return this.getSum(expensesInCategory)
   }
 
-  isCategoryInArraySameCategory(categoryInArray, categoryToCompare){
-    return categoryInArray === categoryToCompare
+  getExpensesSameCategory(expenses, categoryName){
+    let expensesInCategory = []
+
+      for (let i = 0; i < expenses.length; i++) {
+        if (expenses[i].category === categoryName) {
+          expensesInCategory.push(expenses[i])
+        }
+      }
+    return expensesInCategory
   }
 
   getSum (array) {
@@ -52,11 +53,11 @@ export class ExpenseManager {
   getAllExpensesForMonth(year, month){
     let expensesForMonth = []
 
-    for (let i = 0; i < this.expenseHistory.length; i++) {
-     const isExpenseInMonth = this.isExpenseInMonth(this.expenseHistory[i].date, year, month)
+    for (let i = 0; i < this.expenseRecord.length; i++) {
+     const isExpenseInMonth = this.isExpenseInMonth(this.expenseRecord[i].date, year, month)
 
      if (isExpenseInMonth) {
-      expensesForMonth.push(this.expenseHistory[i])
+      expensesForMonth.push(this.expenseRecord[i])
      }
     }
 

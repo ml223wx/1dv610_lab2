@@ -1,12 +1,11 @@
 ### Tabellreflektion för namngivning
 |Namn|Förklaring|Reflektion och regler från Clean Code|
 |---|---|---|
-|categoryExists(expense)|Returnerar ett boolskt värde om en kategori användaren försöker lägga till redan finns.|När funktionen används i koden står det t.ex. "if (this.categoryExists(expense)){...}" vilket förklarar sig självt i och med att koden nästan står skriven i naturligt, mänskligt språk och jag tycker att detta är ett bra sätt att namnge funktioner som returnerar boolska värden på.
-|getSumExpensesForMonth()|Returnerar summan av alla utgifter för en angiven månad|Jag har konsekvent använt mig av verbet "get" och inte blandat. I boken togs det upp som exempel att man inte ska blanda ord som "get", "fetch", "retrieve" osv i sina funktionsnamn om man inte har en mycket bra anledning till det.|
+|categoryExists(expense)|Returnerar ett boolskt värde om en kategori användaren försöker lägga till redan finns.|När funktionen används i koden står det t.ex. "if (this.categoryExists(expense)){...}" vilket förklarar sig självt i och med att koden nästan står skriven i naturligt, mänskligt språk.|
+|findCategoryObject(categoryName)|Hittar ett Category-objekt med en sträng som parameter|Jag har döpt funktionen till findCategoryObject trots att man inte skulle lägga till "noise", i det här fallet att skriva att det är ett objekt som returneras. Jag behövde tydliggöra att det var ett Category-objekt som returnerades och inte namnet på en kategori, därför lät jag det stå kvar.|
 |getSumByCategoryAndMonth()|Returnerar summan från en kategori utgifter för en angiven månad.|Namnet tangerar att vara för långt men jag anser att den håller sig på rätt sida gränsen. Avvägningen är ju att göra funktionsnamnen så självförklarande som möjligt utan att de blir för långa. Jag anser att namnet förklarar exakt vad den gör.|
-|getAllExpensesForMonth()|Returnerar summan för alla utgifter en angiven månad|Jag bryter mot riktlinjen att man inte ska ha långa, liknande funktionsnamn för flera funktioner. Det är svårt när man bara läser koden att vid första försöket se skillnad på exempelvis getSumByCategoryAndMonth(), getSumExpensesForMonth() och getAllExpensesForMonth(). |
-|alreadyExists(categoryName)|Returnerar ett boolskt värde för om en kategori redan finns tillagd i listan|Det kan diskuteras om jag här har brutit mot regeln om "noise", dvs att jag har kallat variabeln "categoryName" istället för bara "category". Det är en sträng och om språket hade varit mer typat hade det stått exempelvis "string" innan, och därmed hade det varit tydligt att argumentet var en sträng. Jag valde att döpa den till categoryName för att tydliggöra att det är just ett namn på en kategori som skickas in, och inte ett helt Category-objekt. Jag hade kunnat döpa variabeln "name" rätt och slätt men anser att det blir tydligare om man vet att det är ett namn på en kategori.|
-
+|getSumExpensesForMonth()|Returnerar summan av alla utgifter för en angiven månad|Jag har konsekvent använt mig av verbet "get" och inte blandat. I boken togs det upp som exempel att man inte ska blanda ord som "get", "fetch", "retrieve" osv i sinda funktionsnamn om man inte har en mycket bra anledning till det.|
+||||
 
 ### Kapitelreflektion kap 2
 
