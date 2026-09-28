@@ -53,8 +53,9 @@ export class ExpenseManager {
     let expensesForMonth = []
 
     for (let i = 0; i < this.expenseHistory.length; i++) {
-     const isSameDate = this.isSameDate(this.expenseHistory[i].date, year, month)
-     if (isSameDate) {
+     const isExpenseInMonth = this.isExpenseInMonth(this.expenseHistory[i].date, year, month)
+
+     if (isExpenseInMonth) {
       expensesForMonth.push(this.expenseHistory[i])
      }
     }
@@ -62,7 +63,7 @@ export class ExpenseManager {
     return expensesForMonth
   }
 
-  isSameDate(expenseDate, year, month){
+  isExpenseInMonth(expenseDate, year, month){
     return expenseDate.getFullYear() === year && expenseDate.getMonth() == month
   }
 
