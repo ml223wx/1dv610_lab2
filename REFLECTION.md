@@ -14,11 +14,11 @@
 
 | Metodnamn | Länk eller kod | Antal rader (ej ws) | Reflektion |
 |---|---|---:|---|
-| `getExpensesSameCategory()` | Se kod nedan | 9 | *Small!, One level of abstraction per function, Use descriptive names*Kod innanför if/else/while statements bör vara en rad lång, helst ett funktionsanrop |
-| `addExpense()` | Se kod nedan | 9 |*Do one thing, One level of abstraction per function, Use descriptive names*  |
-| `getExpensesSameCategory()` | Se kod nedan | 9 | *Small!, One level of abstraction per function, Use descriptive names*|
-| `getAllExpensesForMonth()` | Se kod nedan | 9 | Hade kunnat göra en extra genomsökningsfunktion. Har dessvärre gjort en *triadic function*. Skulle jag ha skapat ett objekt som endast visade sig vara true eller false, enligt boken? |
-| `categoryExists()` | Se kod nedan | 7 | *Small!, One level of abstraction per function, Use descriptive names*|
+| `getExpensesSameCategory()` | Se kod nedan | 9 | **Small!** Kod innanför if/else/while statements bör vara en rad lång vilket jag har lyckats med. Enligt boken ska det helst vara ett funktionsanrop men det är det inte i den här funktionen.  **One level of abstraction per function** Funktionen är bara en loop som skapar en ny array.  **Use descriptive names** Funktionsnamnet förklarar vad den gör.|
+| `addExpense()` | Se kod nedan | 9 |**Do one thing** Funktionen gör en sak, dvs lägger till en Expense. Kontrollen om den är giltig görs i en annan funktion. **One level of abstraction per function** Kontrollen om Expense är giltig görs i en seeparat funktion som anropas från addExpense().  **Use descriptive names** Funktionsnamnet förklarar vad den gör.  |
+| `getExpensesSameCategory()` | Se kod nedan | 9 | **Small!** Kod innanför if/else/while statements bör vara en rad lång vilket jag har lyckats med. Enligt boken ska det helst vara ett funktionsanrop men det är det inte i den här funktionen.  **One level of abstraction per function** Funktionen är bara en loop som skapar en ny array. **Use descriptive names** Funktionsnamnet förklarar vad den gör.|
+| `getAllExpensesForMonth()` | Se kod nedan | 9 | **Small!** Kod innanför if/else/while statements bör vara en rad lång vilket jag har lyckats med. Enligt boken ska det helst vara ett funktionsanrop men det är det inte i den här funktionen. Hade kunnat göra en extra genomsökningsfunktion. **One level of abstraction per function** Funktionen är bara en loop som skapar en ny array. **Use descriptive names** Funktionsnamnet förklarar vad den gör. **Function arguments** Har dessvärre gjort en *triadic function*. Jag skickade med Expense:en som ska genomsökas, och sedan månaden och året som ska matchas mot denna. Enligt boken bör man överväga att skapa ett objekt av argumentetn om man känner sig tvungen att skicka in tre argument, men det kändes "onödigt" i det här fallet. Då skulle jag ha behövt skapa ett objekt för varje Expense som ska genomsökas, som sedan returnerar ett boolskt värde. |
+| `categoryExists()` | Se kod nedan | 7 | **Small!** Kod innanför if/else/while statements bör vara en rad lång vilket jag har lyckats med. **One level of abstraction per function** Funktionen är bara en loop som returnerar ett boolskt värde när den har hittat det den ska (eller inte hittar det). **Use descriptive names** Funktionen får en naturlig plats i koden som förklarar sig själv, det bör vara lätt att förstå vad som menas när "true" eller "false" returneras från categoryExists('Food').|
 
 #### `getExpensesSameCategory()`
 
@@ -96,14 +96,14 @@ categoryExists(expense) {
 
 ### Kapitelreflektion kap 3
 
-Min största fundering gällande kapitel 3 är regeln/riktlinjen om att man ska ha så få parametrar som möjligt när man skriver funktioner.
+En av mina funderingar gällande kapitel 3 är regeln/riktlinjen om att man ska ha så få parametrar som möjligt när man skriver funktioner. Jag kan förstå motiveringen i att koden på så sätt blir mer lättläst om man gör stora projekt (och det är väl det vi övar oss i!) men det känns lite överdrivet att exempelvis, i en loop, skapa ett objekt som innehåller "månad", "dag" och "namn" och sedan jämföra dessa och returnerar sant eller falskt. Varje gång koden kör igenom en iteration av loopen skulle den behöva göra samma sak tills den hittar det den söker. Har man ett litet program tar det inte upp så mycket minne, men skulle man ha ett väldigt stort program vill man nog inte slösa minne på det bara för att man vill slippa skriva "triadic" funktioner.
 
-Kan inte göra niladic functions eftersom jag i varje funktion jag har skrivit har behövt skicka med information om vilken kategori jag söker efter, eller vilken månad. Detta går inte att lägga direkt i klassen. Om man vill göra sådana funktioner måste det vara sådant som redan är sparat i klassen, som är statiskt. Alternativt att man gör en funktion per månad, typ searchAllExpensesForMarch() men det känns extremt opraktiskt.
-Output arguments finns inte på samma sätt i javascript utan det skulle i så fall vara som att ändra på ett objekt. Enligt chatGPT.
+I koden för denna labb har jag inte kunnat skriva några "niadic" funktioner eftersom att varje funktionsanrop hittills har krävt argument från användaren. Oftast är det att man vill söka efter något varför information om t.ex. kategori eller datum behövs. Det enda sättet att göra "niadic" funktioner i min labb hittills hade varit att skapa exempelvis en funktion som bara söker efter "expenses" från i Mars, och att det skulle finnas separata funktioner för varje månad, men det känns som ett slöseri med plats, och mer förvirrande.
 
-Vad jag inte har gjort: Skickat in en boolean i en funktion. Istället if(boolean){nyFunktion()}
-
-Det blir tydligt att de längsta funktionerna jag har skrivit är loopar.
-
+Jag har haft störst problem med att separera abstraktionsnivåer, dels att förstå vad som tillhör vilken abstraktionsnivå, men även själva refaktoriseringen.
+Exempelvis försökte jag refaktorisera en av mina funktioner genom att skriva: <br><br>isCategoryInObjectSameCategory(categoryInArray, categoryToCompare){
+    <br>return categoryInArray === categoryToCompare <br>
+  } <br> <br>
+dvs en funktion som enbart gjorde en jämförelse, men det kändes väldigt onödigt. Skriver jag däremot en jämförelse i en funktion som ska ha hög abstraktionsnivå "blandar" man, enligt boken abstraktionsnivåer. Efter lite trixande kom jag på att jag kunde lösa det, men med en funktion som tog in tre argument. Det jag tar med mig är att allt handlar om balans när det gäller läsbarhet (inte för långa namn), förståelse/understandability (inte för korta namn), balans mellan att skapa för många vs för få steg, t.ex. tilldela en variabel ett värde och sedan skicka in variabeln i en funktion istället för att skicka in värdet direkt, vilket gör läsbarheten lägre.
 
 ### Reflektion över egen kodkvalitet
