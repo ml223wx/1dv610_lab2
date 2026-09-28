@@ -3,7 +3,7 @@ import { Category } from "../src/Category.js"
 
 // Structure by chatGPT:
 
-describe("CategoryManager", () => {
+describe("Category", () => {
 
   it("adds a sub category", () => {
     const newCategory = new Category('Electronics', ['Phone'])

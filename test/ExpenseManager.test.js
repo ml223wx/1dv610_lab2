@@ -19,6 +19,19 @@ describe("ExpenseManager", () => {
     expect(expenseManager.getSumExpensesForMonth(2026, 8)).toBe(100)
   })
 
+  it("checks that an expense added with a non-existing subcategory returns falsy", () => {
+    const expenseManager = new ExpenseManager([],   [{
+      "name": "Food",
+      "subCategories": ["Groceries", "Restaurant", "Snacks"]
+    }])
+
+    const expense = new Expense(100, new Date (2026,8,15), "Wrong", "Snacks", "New test expense")
+
+    expenseManager.addExpense(expense)
+
+    expect(expenseManager.getSumExpensesForMonth(2026, 8)).toBe(0)
+  })
+
 
   it("calculates total for a category for a specific month", () => {
     const expense1 = new Expense(

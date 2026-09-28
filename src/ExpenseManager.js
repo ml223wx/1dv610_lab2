@@ -59,8 +59,7 @@ export class ExpenseManager {
       expensesForMonth.push(expense)
       }
     }
-    console.log("expenses for month:")
-    console.log(expensesForMonth)
+
     return expensesForMonth
   }
 
