@@ -124,3 +124,25 @@ På det stora hela tycker jag att min kodkvalitet i den här labben har varit li
 Jag har inte heller lagt tillräckligt med tid på att sortera upp koden i olika mappar, eller att fundera på vilket sätt jag annars skulle organisera det, utan allt ligger i /src.
 
 Vid ett tillfälle försökte jag följa bokens exempel på hur man bör namnge jämförande funktioner (så att man kommer ihåg i vilken ordning man ska skicka in argumenten), men det blev en funktion med namnet "isExpensesDateYearSameYearExpensesMonthSameMonth (expensesFullYear, year, expensesMonth, month)" som dessutom tog in fyra argument. Min kod har bättre kvalitet än att den funktionen fick vara kvar, den refaktoriserade jag och döpte om.
+
+Något min kod saknar är tillräcklig error handling och exceptions. Det erkänner jag är för att jag känner mig osäker på det, vilket är exakt varför jag borde skriva mer sådant i min labb...
+
+Det finns ett logikfel i mimn kod, och det är att när man filtrerar Expense-objekt efter subkategorier söker den bara på just subkategorier utan att ta hänsyn till huvudkategorin subkategorin hör till. Söker man t.ex. på "Subscriptions" bör man både få med "Subscriptions" som hör till "Undehållning" (om den kategorin har lagts till dvs) och till "Kommunikation" (om den kategorin har lagts till).
+
+### Reflektion över hur det var att skriva en modul
+Jag är antingen en riktig impostor eller har impostor syndrome, för jag är osäker på om jag verkligen har "skrivit en modul". I början var det svårt att tänka ut hur jag skulle göra koden så generell att den går att använda i många olika sammanhang. En av sakerna jag kanske är stoltast över är att jag kom på idén till att läsa in Expense-historik samt Categories från en fil i JSON-format. Det gör koden mer generellt användbar och mer modifierbar. Det förbereder den också för vår framtida labb att skriva en applikation.
+
+### AI-samarbete
+Jag har inte lyckats skaffa någon AI-assistent till VSCode och tänkte första läsåret att det skulle få mig att lära mig koda bättre att jag saknade en. Det börjar bli dags att få ordning på det nu, eftersom jag ofta bara kopierar in funktioner där något blivit fel/buggigt in i chatGPT och låter den felsöka om jag inte snabbt ser vad som blivit fel. Varje gång den ger mig ett förslag på en lösning läser jag igenom för att se så att jag förstår. 
+
+Jag bad den om tips på hur jag kan refaktorisera och göra så att funktionerna har samma abstraktionsnivå, men modifierade så att jag fortfarande förstod. Ett svar jag fick var t.ex:<br><br>
+
+"Problemet här är främst att getAllExpensesForMonth gör tre saker på samma abstraktionsnivå:
+
+Itererar över alla utgifter.
+Extraherar år/månad från ett datum.
+Avgör om en utgift tillhör den efterfrågade månaden."<br><br>
+
+Jag bad den också skriva den enda error handling:en jag har i min kod, dvs i ExpenseManager-klassen och metoden addExpense().
+
+Jag tog mycket hjälp av chatGPT för att få strukturen till mina testfiler, och frågade den om råd när jag inte fick resultatet jag förväntade mig. Sedan utgick jag från strukturen för att själv skriva testen till mina olika funktioner.
