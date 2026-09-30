@@ -1,118 +1,69 @@
 #!/usr/bin/env node
 
-import { testIfIsExported } from "./mockExpenseHistory.js"
-
-
-
-/**
- * The user's expense representing a purchase.
- */
-export class Expense {
-  constructor(amount, date, category, subCategory, comment) {
-    this.amount = amount
-    this.date = date
-    this.category = category
-    this.subCategory = subCategory
-    this.comment = comment
-  }
-
-  getAmount(){
-    return this.amount
-  }
-  getDate(){
-    return this.date
-  }
-  getCategory(){
-    return this.category
-  }
-  getSubcategory(){
-    return this.subCategory
-  }
-  getComment(){
-    return this.comment
-  }
-}
-
-/**
- * Handling the user's expenses and statistics.
- */
-export class ExpenseManager {
-
-  addExpense(){
-
-  }
-
-  removeExpense(){
-
-  }
-
-  getExpense(){
-
-  }
-
-  getExpensesForMonth(year, month){
-
-  }
-  getTotalByCategory(year, month, category){
-
-  }
-  getTotalBySubcategory(year, month, subCategory){
-
-  }
-}
-
-/**
- * A category of purchases.
- */
-export class Category {
-  constructor(name) {
-    this.name = name
-    this.subcategories = []
-  }
-  addSubcategory(subCategoryName){
-    this.subcategories.push(subCategoryName)
-  }
-
-  getSubcategories() {
-    return this.subcategories
-  }
-
-  hasSubcategory(subcategoryName){
-    for (i = 0; i < this.subcategories.length; i++) {
-      console.log("this.subcategories[i]")
-      console.log(this.subcategories[i])
-      console.log("subcategoryName")
-      console.log(subcategoryName)
-      console.log("true or false:")
-      console.log(this.subcategories[i] === subcategoryName)
-      return this.subcategories[i] === subcategoryName
-    }
-  }
-}
-
-/**
- * A sub-category of purchases.
- */
-export class Subcategory {
-  constructor(name) {
-    this.name = name
-  }
-}
+import { Category } from "./Category.js"
+import { CategoryManager} from "./CategoryManager.js"
+import { Expense } from "./Expense.js"
+import { ExpenseManager } from "./ExpenseManager.js"
+import { JSONCategoriesConverter } from "./JSONcategoriesConverter.js"
+import { JSONExpensesHistoryConverter } from "./JSONExpensesHistoryConverter.js"
+import JSONMockExpenseHistory from "./mockExpenseHistory.json" with { type: "json" }
+import JSONStandardCategories from "./standardCategories.json" with { type: "json" }
 
 /**
  * Execution entry point.
  */
 function main() {
   console.log('🚀 Application is up and running!')
-  console.log(testIfIsExported)
 
   try {
-    const testExpense1 = new Expense(100, 2026-9-15, "Mat", "Snacks", "godis")
-    const testExpense2 = new Expense (50, 2026-9-15, "Mat","Livsmedel" ,"kaffe")
-    const expenseManager = new ExpenseManager()
-    expenseManager.addExpense(testExpense1)
-    expenseManager.addExpense(testExpense2)
 
+      // Assign which JSON-data is to be read as expense history:
+      const expenseHistoryFile = JSONMockExpenseHistory
+      // Assign which JSON-data is to be read as categories:
+      const categoriesFile = JSONStandardCategories
+
+      const expensesHistory = new JSONExpensesHistoryConverter(expenseHistoryFile).getExpensesHistory()
+      const categories = new JSONCategoriesConverter(categoriesFile).getCategories()
+
+      const expenseManager = new ExpenseManager(expensesHistory, categories)
+      const categoryManager = new CategoryManager(categories)
+
+      const newTestExpense = new Expense(100, new Date (2026,8,15), "Food", "Snacks", "New test expense")
+
+      // Adds a new expense:
+      expenseManager.addExpense(newTestExpense)
+
+      // Javascript counts the 8th month as September, since the 0th is January.
+
+      try {
+        console.log('Gets the sum of all expenses for September:')
+        console.log(expenseManager.getSumExpensesForMonth(2026, 8))
+      } catch (error) {
+        console.error(error.message)
+      }
+
+      try {
+      console.log('Gets all "Food" category expenses for September: ')
+      console.log(expenseManager.getSumByCategoryAndMonth(2026, 8, 'Food'))
+      } catch (error) {
+        console.error(error.message)
+      }
+
+      try {
+      console.log('Gets all "Food" - "Restaurant" sub category expenses for July: ')
+      console.log(expenseManager.getTotalBySubCategory(2026, 6, 'Restaurant'))
+      } catch (error) {
+        console.error(error.message)
+      }
+
+      // Adds a category to the existing categories that weresent as arguments to ExpenseManager.
+      // Each category has to have at least 1 sub category.
+
+      const newCategory =  new Category("Health & Beauty", ["Beauty", "Healthcare"])
+      categoryManager.addCategory(newCategory)
+
+      // // Adds a sub category:
+      categoryManager.addSubCategory("Health & Beauty", "Medication")
 
   } catch (error) {
     console.error('An unexpected error occurred during execution:', error.message)
